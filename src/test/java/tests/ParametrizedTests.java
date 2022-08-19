@@ -19,8 +19,8 @@ public class ParametrizedTests extends TestBase {
             "MEN",
             "WOMEN"
     })
-    @ParameterizedTest
-    void checkMarketPlaceButtonAppearence (String testData) {
+    @ParameterizedTest(name = "Check that Marketplace menu item exists for both gender \"{0}\" ")
+    void checkMarketPlaceButtonAppears (String testData) {
         open("");
         mainPage.selectGender(testData)
                 .checkButtonWithTextExists(marketPlace);
@@ -41,8 +41,8 @@ public class ParametrizedTests extends TestBase {
     }
 
     @EnumSource(Gender.class)
-    @ParameterizedTest
-    void checkMarketPlaceButtonAppearenc2 (Gender gender) {
+    @ParameterizedTest(name = "Check that more then one buttons are displayed when selecting gender \"{0}\" ")
+    void checkMarketPlaceButtonAppearence (Gender gender) {
         open("");
         mainPage.selectGender(gender.name())
                 .checkSetOfButtonsExists();
